@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
+
+  /* Navy scale - from the logo's trunk/base gradient */
+  --color-navy-950: #071b30;
+  --color-navy-900: #0a2850;
+  --color-navy-800: #0d3660;
+  --color-navy-700: #144664;
+  --color-navy-600: #1e5a6e;
+  --color-navy-500: #286e78;
+  --color-navy-100: #c7dce2;
+
+  /* Teal scale - from the logo's leaf-top gradient */
+  --color-teal-600: #2f7a72;
+  --color-teal-500: #328282;
+  --color-teal-400: #3c8c82;
+  --color-teal-300: #7dc2b8;
+
+  /* Warm neutrals -> cool neutrals matching the logo's clean, cool tone */
+  --color-paper: #f7f9fa;
+  --color-paper-dim: #eef2f3;
+  --color-ink: #0f2233;
+  --color-slate-600: #55636b;
+  --color-slate-500: #6f7d84;
+  --color-line: #dde5e8;
+
+  --radius-card: 1.25rem;
+  --shadow-card: 0 4px 28px rgba(10, 40, 80, 0.07);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
