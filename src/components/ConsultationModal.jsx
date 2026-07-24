@@ -55,8 +55,8 @@ export default function ConsultationModal({ open, onClose, prefilledInterest }) 
     <div className="fixed inset-0 z-[100] flex items-center justify-center px-4" role="dialog" aria-modal="true">
       <div className="absolute inset-0 bg-navy-950/60 backdrop-blur-sm" onClick={onClose} />
 
-      <div className="relative w-full max-w-md rounded-2xl bg-white shadow-2xl border border-line overflow-hidden">
-        <div className="flex items-start justify-between px-7 pt-7">
+      <div className="relative w-[92vw] max-w-[480px] rounded-[28px] bg-white border border-line shadow-[0_30px_80px_rgba(18,60,95,0.18)] overflow-hidden">
+        <div className="flex items-start justify-between px-7 pt-5 pb-1">
           <div>
             <p className="text-xs font-semibold uppercase tracking-wide text-teal-600">Free Consultation</p>
             <h3 className="mt-1.5 font-display font-semibold text-xl text-navy-950">Talk to Karmayafin</h3>
@@ -70,7 +70,7 @@ export default function ConsultationModal({ open, onClose, prefilledInterest }) 
         </div>
 
         {submitted ? (
-          <div className="px-7 pt-6 pb-8">
+          <div className="px-5 sm:px-6 md:px-7 pt-5 pb-6">
             <div className="rounded-xl bg-navy-900/5 border border-navy-900/10 p-5">
               <p className="font-display font-semibold text-navy-950">Thanks, {form.name}.</p>
               <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">
@@ -85,7 +85,7 @@ export default function ConsultationModal({ open, onClose, prefilledInterest }) 
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="px-7 pt-6 pb-7 space-y-4">
+          <form onSubmit={handleSubmit} className="px-7 pt-4 pb-6 space-y-3">
             <Field label="Name" value={form.name} onChange={(v) => update("name", v)} error={errors.name} autoFocus />
             <Field label="Mobile number" type="tel" value={form.mobile} onChange={(v) => update("mobile", v)} error={errors.mobile} />
             <Field label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} error={errors.email} />
@@ -95,7 +95,7 @@ export default function ConsultationModal({ open, onClose, prefilledInterest }) 
               <select
                 value={form.interest}
                 onChange={(e) => update("interest", e.target.value)}
-                className="mt-1.5 w-full rounded-lg border border-line px-3.5 py-2.5 text-sm text-navy-950 outline-none focus:border-navy-500"
+                className="mt-1 w-full rounded-xl border border-line px-4 py-2.5 text-sm text-navy-950 outline-none transition-all focus:border-navy-500"
               >
                 {interests.map((i) => (
                   <option key={i} value={i}>{i}</option>
@@ -108,14 +108,14 @@ export default function ConsultationModal({ open, onClose, prefilledInterest }) 
               <textarea
                 value={form.message}
                 onChange={(e) => update("message", e.target.value)}
-                rows={3}
-                className="mt-1.5 w-full rounded-lg border border-line px-3.5 py-2.5 text-sm text-navy-950 outline-none focus:border-navy-500 resize-none"
+                rows={2}
+                className="mt-1 w-full rounded-xl border border-line px-4 py-2.5 text-sm text-navy-950 outline-none transition-all focus:border-navy-500 resize-none"
               />
             </label>
 
             <button
               type="submit"
-              className="w-full inline-flex justify-center items-center rounded-full bg-navy-900 text-white text-sm font-semibold px-5 py-3 hover:bg-navy-700 transition-colors"
+              className="w-full inline-flex justify-center items-center rounded-full bg-gradient-to-r from-navy-900 to-teal-600 text-white font-semibold py-3 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
             >
               Request a Callback
             </button>
@@ -142,7 +142,7 @@ function Field({ label, value, onChange, error, type = "text", autoFocus = false
         value={value}
         autoFocus={autoFocus}
         onChange={(e) => onChange(e.target.value)}
-        className={`mt-1.5 w-full rounded-lg border px-3.5 py-2.5 text-sm text-navy-950 outline-none transition-colors focus:border-navy-500 ${
+        className={`mt-1 w-full rounded-xl border px-4 py-2.5 text-sm text-navy-950 outline-none transition-all focus:border-navy-500 ${
           error ? "border-red-300" : "border-line"
         }`}
       />

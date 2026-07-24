@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { Plus } from "lucide-react";
 
 const faqs = [
   {
@@ -8,60 +8,113 @@ const faqs = [
   },
   {
     q: "How much money do I need to start?",
-    a: "You can start a SIP with as little as ₹500 per month. There's no need to wait until you have a large amount.",
+    a: "You can start investing with a SIP from just ₹500 per month. Small, disciplined investments can create long-term wealth.",
   },
   {
     q: "Are my investments safe?",
-    a: "Mutual fund investments are subject to market risks and returns are not guaranteed. Disciplined, long-term, goal-based investing helps manage risk, and we help you choose funds appropriate to your risk appetite.",
+    a: "Mutual funds are regulated by SEBI. While markets fluctuate, investing based on your goals and risk profile helps manage risk over time.",
   },
   {
     q: "Do you charge me a fee?",
-    a: "As a mutual fund distributor, we are compensated through commissions paid by the asset management companies.",
+    a: "No. We are compensated by Asset Management Companies, so there is no separate advisory fee charged to you.",
   },
   {
     q: "How do I get started?",
-    a: "Simply call us at 98800 89210 or fill out the contact form, and we'll schedule a free consultation.",
+    a: "Click the Free Consultation button or call us. We'll understand your financial goals and recommend a suitable investment plan.",
   },
 ];
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState(0);
+  const [openIndex, setOpenIndex] = useState(-1);
 
   return (
-    <section id="faqs" className="bg-white">
-      <div className="max-w-4xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
-        <div className="mb-10">
-          <span className="inline-flex items-center rounded-full bg-navy-900/5 text-navy-800 text-xs font-semibold uppercase tracking-wide px-4 py-1.5 mb-6 border border-navy-900/10">
-            FAQs
-          </span>
-          <h2 className="font-display font-semibold text-3xl sm:text-4xl leading-tight tracking-tight text-navy-950">
-            Frequently asked questions.
-          </h2>
+    <section
+      id="faqs"
+      className="relative overflow-hidden bg-gradient-to-br from-[#EAF4FE] via-[#F6FCFA] to-[#E7F7F1]"
+    >
+      {/* Background Glow */}
+      <div className="absolute -top-40 -left-32 w-80 h-80 bg-sky-200/15 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-teal-200/15 rounded-full blur-3xl"></div>
+
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-14 lg:py-16">
+
+        <h2 className="font-display text-center text-3xl sm:text-4xl font-semibold text-navy-950 mb-10">
+          Frequently Asked Questions
+        </h2>
+
+        <div className="w-full">
+
+          <div className="space-y-3">
+
+            {faqs.map((item, index) => {
+
+              const isOpen = openIndex === index;
+
+              return (
+
+                <div
+                  key={item.q}
+                  className={`rounded-2xl overflow-hidden transition-all duration-300 backdrop-blur-xl
+                  ${
+                    isOpen
+                      ? "border border-[#73C6B6] bg-gradient-to-r from-white/90 via-[#F8FDFF] to-[#EDFDF8] shadow-[0_15px_35px_rgba(18,60,95,0.12)]"
+                      : "border border-white/70 bg-gradient-to-r from-white/90 via-[#FCFEFF] to-[#F3FCF8] shadow-[0_8px_22px_rgba(18,60,95,0.05)] hover:-translate-y-1 hover:shadow-[0_12px_28px_rgba(18,60,95,0.10)]"
+                  }`}
+                >
+
+                  <button
+                    onClick={() =>
+                      setOpenIndex(isOpen ? -1 : index)
+                    }
+                    className="w-full flex items-center justify-between px-6 py-4 text-left"
+                  >
+
+                    <h3 className="font-display font-semibold text-[18px] text-navy-950">
+                      {item.q}
+                    </h3>
+
+                    <div
+                      className={`w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300
+                      ${
+                        isOpen
+                          ? "bg-gradient-to-br from-[#123C5F] via-[#1D5C7B] to-[#4FAE9C]"
+                          : "bg-white/80 backdrop-blur-lg shadow-md"
+                      }`}
+                    >
+                      <Plus
+                        size={16}
+                        className={`transition-all duration-300 ${
+                          isOpen
+                            ? "rotate-45 text-white"
+                            : "text-[#123C5F]"
+                        }`}
+                      />
+                    </div>
+
+                  </button>
+
+                  <div
+                    className={`transition-all duration-300 overflow-hidden ${
+                      isOpen
+                        ? "max-h-48 opacity-100"
+                        : "max-h-0 opacity-0"
+                    }`}
+                  >
+                    <p className="px-6 pb-5 text-sm leading-7 text-slate-600">
+                      {item.a}
+                    </p>
+                  </div>
+
+                </div>
+
+              );
+
+            })}
+
+          </div>
+
         </div>
 
-        <div className="space-y-3">
-          {faqs.map((item, i) => {
-            const isOpen = openIndex === i;
-            return (
-              <div key={item.q} className="rounded-2xl border border-line bg-paper overflow-hidden">
-                <button
-                  onClick={() => setOpenIndex(isOpen ? -1 : i)}
-                  className="w-full flex items-center justify-between gap-4 text-left px-6 py-5"
-                  aria-expanded={isOpen}
-                >
-                  <span className="font-display font-semibold text-navy-950">{item.q}</span>
-                  <ChevronDown
-                    size={18}
-                    className={`shrink-0 text-navy-700 transition-transform ${isOpen ? "rotate-180" : ""}`}
-                  />
-                </button>
-                {isOpen && (
-                  <div className="px-6 pb-5 text-sm text-slate-600 leading-relaxed">{item.a}</div>
-                )}
-              </div>
-            );
-          })}
-        </div>
       </div>
     </section>
   );

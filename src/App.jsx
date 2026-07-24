@@ -10,7 +10,7 @@ import Calculators from "./components/Calculators";
 import Testimonials from "./components/Testimonials";
 import FAQ from "./components/FAQ";
 import CTA from "./components/CTA";
-import Contact from "./components/Contact";
+// import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ConsultationModal from "./components/ConsultationModal";
 
@@ -37,7 +37,7 @@ export default function App() {
         <Testimonials />
         <FAQ />
         <CTA onConsult={() => openConsult()} />
-        <Contact onConsult={() => openConsult()} />
+        {/* <Contact onConsult={() => openConsult()} /> */}
       </main>
       <Footer />
       <ConsultationModal

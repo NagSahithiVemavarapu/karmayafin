@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 const links = [
   { name: "About", href: "#about" },
@@ -16,9 +16,17 @@ export default function Navbar({ onConsult }) {
 
   return (
     <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur-sm border-b border-line">
-      <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
-        <a href="#top" className="flex items-center gap-2.5" aria-label="Karmayafin home">
-          <img src="/logo-mark.png" alt="Karmayafin" className="h-11 w-auto object-contain" />
+      <nav className="w-full px-5 lg:px-8 h-20 flex items-center justify-between">
+        <a
+          href="#top"
+          className="flex items-center gap-2.5"
+          aria-label="Karmayafin home"
+        >
+          <img
+            src="/logo-mark.png"
+            alt="Karmayafin"
+            className="h-11 w-auto object-contain"
+          />
           <span className="font-display font-semibold text-2xl text-navy-900 tracking-tight">
             Karmaya<span className="text-teal-600">fin</span>
           </span>
@@ -36,21 +44,17 @@ export default function Navbar({ onConsult }) {
           ))}
         </div>
 
-        <div className="hidden lg:flex items-center gap-5">
-          <a
-            href="tel:+919880089210"
-            className="flex items-center gap-1.5 text-sm font-semibold text-navy-800"
-          >
-            <Phone size={15} /> 98800 89210
-          </a>
+        {/* Desktop CTA */}
+        <div className="hidden lg:flex items-center">
           <button
             onClick={onConsult}
-            className="inline-flex items-center rounded-full bg-navy-900 text-white text-sm font-semibold px-5 py-2.5 hover:bg-navy-700 transition-colors"
+            className="inline-flex items-center rounded-full bg-navy-900 text-white text-sm font-semibold px-6 py-3 hover:bg-navy-700 transition-colors"
           >
             Free Consultation
           </button>
         </div>
 
+        {/* Mobile Menu Button */}
         <button
           className="lg:hidden text-navy-900"
           onClick={() => setOpen(!open)}
@@ -60,8 +64,9 @@ export default function Navbar({ onConsult }) {
         </button>
       </nav>
 
+      {/* Mobile Menu */}
       {open && (
-        <div className="lg:hidden border-t border-line bg-paper px-6 py-6 space-y-4">
+        <div className="lg:hidden border-t border-line bg-paper px-5 py-6 space-y-4">
           {links.map((l) => (
             <a
               key={l.name}
@@ -72,15 +77,13 @@ export default function Navbar({ onConsult }) {
               {l.name}
             </a>
           ))}
-          <a href="tel:+919880089210" className="flex items-center gap-1.5 text-sm font-semibold text-navy-800">
-            <Phone size={15} /> 98800 89210
-          </a>
+
           <button
             onClick={() => {
               setOpen(false);
               onConsult();
             }}
-            className="w-full inline-flex justify-center items-center rounded-full bg-navy-900 text-white text-sm font-semibold px-5 py-3"
+            className="w-full inline-flex justify-center items-center rounded-full bg-navy-900 text-white text-sm font-semibold px-5 py-3 hover:bg-navy-700 transition-colors"
           >
             Free Consultation
           </button>
