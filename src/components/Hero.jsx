@@ -4,7 +4,7 @@ export default function Hero({ onConsult }) {
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-[radial-gradient(ellipse_at_top_right,_#f2ecdd_0%,_#faf6ec_55%)]"
+      className="relative overflow-hidden hero-section"
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-10 pt-14 pb-16 lg:pt-20 lg:pb-24 grid lg:grid-cols-[1.05fr_0.95fr] gap-14 items-center">
         <div>
@@ -23,13 +23,13 @@ export default function Hero({ onConsult }) {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <button
               onClick={onConsult}
-              className="inline-flex items-center rounded-full bg-navy-900 text-white text-sm font-semibold px-6 py-3.5 hover:bg-navy-700 transition-colors"
+              className=" inline-flex items-center justify-center gap-2 rounded-full px-10 py-5 text-base font-semibold text-white bg-gradient-to-r from-[#123C5F] to-[#4B9A92] shadow-lg shadow-[#123C5F]/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#123C5F]/30"
             >
               Start Investing
             </button>
             <button
               onClick={onConsult}
-              className="inline-flex items-center rounded-full border border-navy-900/20 text-navy-900 text-sm font-semibold px-6 py-3.5 hover:border-teal-500 hover:text-teal-600 transition-colors"
+              className="inline-flex items-center justify-center gap-2 rounded-full px-10 py-5 font-semibold text-[#123C5F] border-2 border-white/70 bg-white/60 backdrop-blur-xl shadow-[0_12px_30px_rgba(18,60,95,0.10)] transition-all duration-300 hover:bg-white/85 hover:border-[#63B5A2] hover:shadow-[0_18px_40px_rgba(18,60,95,0.18)] hover:-translate-y-1"
             >
               Schedule a Free Consultation
             </button>
