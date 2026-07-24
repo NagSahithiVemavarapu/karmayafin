@@ -1,61 +1,126 @@
 @import "tailwindcss";
 
 @theme {
+
+  /* =========================
+     Typography
+  ========================== */
+
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 
-  /* Navy scale - from the logo's trunk/base gradient */
-  --color-navy-950: #071b30;
-  --color-navy-900: #0a2850;
-  --color-navy-800: #0d3660;
-  --color-navy-700: #144664;
-  --color-navy-600: #1e5a6e;
-  --color-navy-500: #286e78;
-  --color-navy-100: #c7dce2;
+  /* =========================
+     Primary Brand Colors
+     (Taken from Logo)
+  ========================== */
 
-  /* Teal scale - from the logo's leaf-top gradient */
-  --color-teal-600: #2f7a72;
-  --color-teal-500: #328282;
-  --color-teal-400: #3c8c82;
-  --color-teal-300: #7dc2b8;
+  --color-navy-950: #123C5F;
+  --color-navy-900: #18486C;
+  --color-navy-800: #1E5678;
+  --color-navy-700: #256A83;
+  --color-navy-600: #2C7287;
+  --color-navy-500: #3D8E94;
+  --color-navy-400: #63B5A2;
+  --color-navy-100: #DFF4EF;
 
-  /* Warm neutrals -> cool neutrals matching the logo's clean, cool tone */
-  --color-paper: #f7f9fa;
-  --color-paper-dim: #eef2f3;
-  --color-ink: #0f2233;
-  --color-slate-600: #55636b;
-  --color-slate-500: #6f7d84;
-  --color-line: #dde5e8;
+  /* =========================
+     Accent Teals
+  ========================== */
+
+  --color-teal-700: #3B8B81;
+  --color-teal-600: #499B91;
+  --color-teal-500: #63B5A2;
+  --color-teal-400: #7BC9BC;
+  --color-teal-300: #A4E3D9;
+  --color-teal-100: #EEF9F6;
+
+  /* =========================
+     Neutral Colors
+  ========================== */
+
+  --color-paper: #FFFFFF;
+  --color-paper-dim: #F8FBFC;
+
+  --color-ink: #123C5F;
+
+  --color-slate-700: #435C69;
+  --color-slate-600: #637784;
+  --color-slate-500: #8898A2;
+
+  --color-line: #D9E7E8;
+
+  /* =========================
+     Radius & Shadow
+  ========================== */
 
   --radius-card: 1.25rem;
-  --shadow-card: 0 4px 28px rgba(10, 40, 80, 0.07);
+
+  --shadow-card:
+      0 10px 35px rgba(18,60,95,.08);
+
 }
 
-html {
-  scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
-  font-family: var(--font-body);
+.hero-section{
+
+background:
+radial-gradient(
+circle at 88% 22%,
+rgba(99,181,162,.18),
+transparent 60%
+),
+
+radial-gradient(
+circle at 75% 75%,
+rgba(44,114,135,.08),
+transparent 45%
+),
+
+linear-gradient(
+135deg,
+#FFFFFF,
+#F8FCFC,
+#EEF9F6
+);
+
 }
 
-.font-display {
-  font-family: var(--font-display);
+body{
+
+    background:linear-gradient(
+        180deg,
+        #FFFFFF,
+        #FAFCFC
+    );
+
+    color:var(--color-ink);
+
+    font-family:var(--font-body);
+
 }
 
-.font-mono {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
+.font-display{
+    font-family:var(--font-display);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
+.font-mono{
+    font-family:var(--font-mono);
+    font-variant-numeric:tabular-nums;
+}
+
+@media(prefers-reduced-motion:reduce){
+
+*{
+
+animation-duration:.01ms!important;
+animation-iteration-count:1!important;
+transition-duration:.01ms!important;
+scroll-behavior:auto!important;
+
+}
+
 }
