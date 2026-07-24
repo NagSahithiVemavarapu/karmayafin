@@ -20,18 +20,12 @@ export default function Hero({ onConsult }) {
             investing.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="mt-8">
             <button
               onClick={onConsult}
-              className=" inline-flex items-center justify-center gap-2 rounded-full px-10 py-5 text-base font-semibold text-white bg-gradient-to-r from-[#123C5F] to-[#4B9A92] shadow-lg shadow-[#123C5F]/20 transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-[#123C5F]/30"
-            >
-              Start Investing
-            </button>
-            <button
-              onClick={onConsult}
-              className="inline-flex items-center justify-center gap-2 rounded-full px-10 py-5 font-semibold text-[#123C5F] border-2 border-white/70 bg-white/60 backdrop-blur-xl shadow-[0_12px_30px_rgba(18,60,95,0.10)] transition-all duration-300 hover:bg-white/85 hover:border-[#63B5A2] hover:shadow-[0_18px_40px_rgba(18,60,95,0.18)] hover:-translate-y-1"
-            >
-              Schedule a Free Consultation
+              className="inline-flex items-center rounded-full bg-gradient-to-r from-[#123C5F] to-[#4FAE9C] text-white font-semibold px-10 py-4 shadow-[0_12px_30px_rgba(79,174,156,0.30)] hover:scale-105 transition-all duration-300"
+          >
+            Start Investing
             </button>
           </div>
 
