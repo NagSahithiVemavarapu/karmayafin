@@ -30,7 +30,7 @@ export default function FAQ() {
   return (
     <section
       id="faqs"
-      className="relative overflow-hidden bg-gradient-to-br from-[#F8FCFF] via-white to-[#F5FCFA]"
+      className="relative overflow-hidden bg-gradient-to-br from-[#EAF4FE] via-[#F6FCFA] to-[#E7F7F1]"
     >
       {/* Background Glow */}
       <div className="absolute -top-40 -left-32 w-80 h-80 bg-sky-200/15 rounded-full blur-3xl"></div>
@@ -42,19 +42,7 @@ export default function FAQ() {
           Frequently Asked Questions
         </h2>
 
-        <div className="grid lg:grid-cols-[260px_1fr] gap-8 items-center">
-
-          {/* Illustration */}
-
-          <div className="flex justify-center">
-            <img
-              src="/faq-illustration.png"
-              alt="FAQ"
-              className="w-full max-w-[240px] object-contain"
-            />
-          </div>
-
-          {/* FAQ */}
+        <div className="w-full">
 
           <div className="space-y-3">
 

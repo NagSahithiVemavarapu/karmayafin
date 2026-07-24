@@ -27,7 +27,7 @@ export default function Process() {
   return (
     <section
       id="process"
-      className="relative overflow-hidden bg-gradient-to-br from-[#F6FAFE] via-[#FBFDFF] to-[#EEF7FD]"
+      className="relative overflow-hidden bg-gradient-to-br from-[#E3EFFB] via-[#F1F8FF] to-[#DCEEF7]"
     >
       {/* Background Glow */}
       <div className="absolute inset-0 pointer-events-none">

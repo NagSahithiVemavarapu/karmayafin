@@ -11,7 +11,7 @@ const reasons = [
 
 export default function WhyChooseUs() {
   return (
-    <section id="why-choose" className="relative overflow-hidden bg-gradient-to-br from-[#F5FCFA] via-[#FBFEFD] to-[#EDF9F6]">
+    <section id="why-choose" className="relative overflow-hidden bg-gradient-to-br from-white via-[#FAFEFC] to-[#F2FAF7]">
       <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-teal-200/20 blur-3xl"></div>
       <div className="absolute -bottom-24 -left-24 w-72 h-72 rounded-full bg-emerald-200/20 blur-3xl"></div>
       <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">

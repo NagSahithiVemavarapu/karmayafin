@@ -42,8 +42,11 @@ const goals = [
 
 export default function GoalSolutions() {
   return (
-    <section id="goals" className="bg-navy-950 text-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <section id="goals" className="relative overflow-hidden bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white">
+      <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-navy-100/20 to-transparent"></div>
+      <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-teal-400/10 blur-3xl"></div>
+      <div className="absolute -bottom-32 -right-24 w-96 h-96 rounded-full bg-teal-500/10 blur-3xl"></div>
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
         <div className="mb-10 max-w-2xl">
           <span className="inline-flex items-center rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold uppercase tracking-wide px-4 py-1.5 mb-6">
             Goal-Based Solutions

@@ -8,7 +8,7 @@ import {
 export default function Footer() {
   return (
     <footer id="contact" className="bg-navy-950 text-navy-100/70">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid md:grid-cols-3 gap-12">
+      <div className="w-full px-5 lg:px-8 py-12 grid md:grid-cols-3 gap-8">
 
         {/* Logo */}
         <div>
@@ -122,7 +122,7 @@ export default function Footer() {
 
       {/* Bottom */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 text-xs space-y-3">
+        <div className="w-full px-5 lg:px-8 py-6 text-xs space-y-3">
 
           <p>
             © {new Date().getFullYear()} Karmayafin.

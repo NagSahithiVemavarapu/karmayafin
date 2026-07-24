@@ -3,7 +3,7 @@ import ctaBackground from "/cta-background.jpg";
 
 export default function CTA({ onConsult }) {
   return (
-    <section className="px-4 sm:px-6 py-10">
+    <section className="px-4 sm:px-6 py-10 bg-paper-dim">
       <div
         className="relative max-w-4xl mx-auto rounded-[28px] overflow-hidden text-white bg-cover bg-center"
         style={{ backgroundImage: `url(${ctaBackground})` }}

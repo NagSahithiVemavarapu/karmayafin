@@ -154,7 +154,7 @@ export default function Calculators() {
   const [active, setActive] = useState("SIP");
 
   return (
-    <section id="calculators" className="bg-white">
+    <section id="calculators" className="bg-gradient-to-br from-teal-100/60 via-white to-navy-100/50">
       <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
         <div className="mb-10 max-w-2xl">
           <span className="inline-flex items-center rounded-full bg-navy-900/5 text-navy-800 text-xs font-semibold uppercase tracking-wide px-4 py-1.5 mb-6 border border-navy-900/10">

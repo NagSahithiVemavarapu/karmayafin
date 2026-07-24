@@ -16,7 +16,7 @@ export default function Navbar({ onConsult }) {
 
   return (
     <header className="sticky top-0 z-50 bg-paper/95 backdrop-blur-sm border-b border-line">
-      <nav className="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <nav className="w-full px-5 lg:px-8 h-20 flex items-center justify-between">
         <a
           href="#top"
           className="flex items-center gap-2.5"
@@ -66,7 +66,7 @@ export default function Navbar({ onConsult }) {
 
       {/* Mobile Menu */}
       {open && (
-        <div className="lg:hidden border-t border-line bg-paper px-6 py-6 space-y-4">
+        <div className="lg:hidden border-t border-line bg-paper px-5 py-6 space-y-4">
           {links.map((l) => (
             <a
               key={l.name}
