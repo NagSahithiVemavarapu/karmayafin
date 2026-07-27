@@ -42,41 +42,87 @@ const goals = [
 
 export default function GoalSolutions() {
   return (
-    <section id="goals" className="relative overflow-hidden bg-gradient-to-br from-navy-950 via-navy-900 to-navy-800 text-white">
-      <div className="absolute top-0 inset-x-0 h-28 bg-gradient-to-b from-navy-100/20 to-transparent"></div>
-      <div className="absolute -top-24 -left-24 w-80 h-80 rounded-full bg-teal-400/10 blur-3xl"></div>
-      <div className="absolute -bottom-32 -right-24 w-96 h-96 rounded-full bg-teal-500/10 blur-3xl"></div>
-      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
-        <div className="mb-10 max-w-2xl">
-          <span className="inline-flex items-center rounded-full bg-teal-500/10 text-teal-400 text-xs font-semibold uppercase tracking-wide px-4 py-1.5 mb-6">
+    <section
+      id="goals"
+      className="relative overflow-hidden bg-sky-50"
+    >
+      {/* Soft background glows to add depth to the light blue */}
+      <div className="absolute -top-56 -right-48 w-[650px] h-[650px] rounded-full bg-white/60 blur-[180px]" />
+      <div className="absolute -bottom-52 -left-48 w-[620px] h-[620px] rounded-full bg-[#DDF5EF]/60 blur-[200px]" />
+
+      <div className="relative max-w-6xl mx-auto px-6 lg:px-10 py-20">
+
+        {/* Heading */}
+        <div className="mb-14 max-w-2xl">
+          <span className="inline-flex items-center rounded-full bg-white border border-sky-200 text-[#0891B2] text-xs font-semibold uppercase tracking-wide px-4 py-2 mb-6 shadow-sm">
             Goal-Based Solutions
           </span>
 
-          <h2 className="font-display font-semibold text-3xl sm:text-4xl leading-tight tracking-tight">
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl text-[#0F172A] leading-tight">
             What are you investing for?
           </h2>
+
+          <p className="mt-5 text-lg text-[#475569] leading-7">
+            Every financial goal deserves a dedicated investment strategy.
+            We'll help you build wealth with purpose and confidence.
+          </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        {/* Cards */}
+        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           {goals.map(({ icon: Icon, title, desc }) => (
             <div
               key={title}
-              className="group cursor-pointer rounded-3xl border border-white/10 bg-gradient-to-br from-[#214F72] via-[#2A5C7A] to-[#4EA99B] p-5 min-h-[165px] shadow-[0_10px_28px_rgba(0,0,0,0.18)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_22px_45px_rgba(79,174,156,0.28)]"
+              className="
+                group
+                rounded-[26px]
+                border
+                border-sky-100
+                bg-white
+                p-6
+                shadow-sm
+                transition-all
+                duration-500
+                hover:-translate-y-2
+                hover:shadow-md
+                hover:border-sky-200
+              "
             >
-              <div className="w-10 h-10 rounded-2xl bg-white/10 backdrop-blur-md flex items-center justify-center transition-all duration-500 group-hover:bg-white/20 group-hover:scale-110 group-hover:rotate-6">
-                <Icon size={18} className="text-[#C8FFF3]" />
+              {/* Icon Box */}
+              <div
+                className="
+                  w-12
+                  h-12
+                  rounded-xl
+                  bg-sky-100
+                  flex
+                  items-center
+                  justify-center
+                  transition-all
+                  duration-500
+                  group-hover:scale-110
+                  group-hover:rotate-6
+                "
+              >
+                <Icon size={20} className="text-[#0891B2]" />
               </div>
 
-              <h3 className="mt-3 font-display font-semibold text-xl text-white transition-colors duration-300 group-hover:text-[#D7FFF6]">
+              {/* Title */}
+              <h3 className="mt-4 font-display font-semibold text-xl text-[#0F172A]">
                 {title}
               </h3>
 
-              <p className="mt-2 text-sm leading-6 text-white/80">
+              {/* Accent Line */}
+              <div className="mt-3 h-[3px] w-14 rounded-full bg-gradient-to-r from-sky-200 to-[#0891B2]" />
+
+              {/* Description */}
+              <p className="mt-4 text-base leading-7 text-[#475569]">
                 {desc}
               </p>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

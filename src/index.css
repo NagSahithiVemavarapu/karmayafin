@@ -1,11 +1,9 @@
 @import "tailwindcss";
 
 @theme {
-
   /* =========================
      Typography
   ========================== */
-
   --font-display: "Fraunces", Georgia, serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
@@ -14,7 +12,6 @@
      Primary Brand Colors
      (Taken from Logo)
   ========================== */
-
   --color-navy-950: #123C5F;
   --color-navy-900: #18486C;
   --color-navy-800: #1E5678;
@@ -27,7 +24,6 @@
   /* =========================
      Accent Teals
   ========================== */
-
   --color-teal-700: #3B8B81;
   --color-teal-600: #499B91;
   --color-teal-500: #63B5A2;
@@ -38,104 +34,73 @@
   /* =========================
      Neutral Colors
   ========================== */
-
   --color-paper: #FFFFFF;
   --color-paper-dim: #F8FBFC;
-
   --color-ink: #123C5F;
-
   --color-slate-700: #435C69;
   --color-slate-600: #637784;
   --color-slate-500: #8898A2;
-
   --color-line: #D9E7E8;
 
   /* =========================
      Radius & Shadow
   ========================== */
-
   --radius-card: 1.25rem;
-
-  --shadow-card:
-      0 10px 35px rgba(18,60,95,.08);
-
+  --shadow-card: 0 10px 35px rgba(18,60,95,.08);
 }
 
-html{
-    scroll-behavior:smooth;
+html {
+  scroll-behavior: smooth;
 }
 
-.hero-section{
-
-background:
-radial-gradient(
-circle at 88% 22%,
-rgba(99,181,162,.18),
-transparent 60%
-),
-
-radial-gradient(
-circle at 75% 75%,
-rgba(44,114,135,.08),
-transparent 45%
-),
-
-linear-gradient(
-135deg,
-#FFFFFF,
-#F8FCFC,
-#EEF9F6
-);
-
+.hero-section {
+  background: 
+    radial-gradient(circle at 88% 22%, rgba(99, 181, 162, .18), transparent 60%),
+    radial-gradient(circle at 75% 75%, rgba(44, 114, 135, .08), transparent 45%),
+    linear-gradient(135deg, #FFFFFF, #F8FCFC, #EEF9F6);
 }
 
-body{
-
-    background:linear-gradient(
-        180deg,
-        #FFFFFF,
-        #FAFCFC
-    );
-
-    color:var(--color-ink);
-
-    font-family:var(--font-body);
-
+body {
+  background: linear-gradient(180deg, #FFFFFF, #FAFCFC);
+  color: var(--color-ink);
+  font-family: var(--font-body);
 }
 
-.font-display{
-    font-family:var(--font-display);
+.font-display {
+  font-family: var(--font-display);
 }
 
-.font-mono{
-    font-family:var(--font-mono);
-    font-variant-numeric:tabular-nums;
+.font-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
 }
 
-.marquee-track{
-    display:flex;
-    width:max-content;
-    animation:marquee 32s linear infinite;
+/* =========================
+   Marquee Animation (Standard CSS)
+========================== */
+@keyframes scroll-marquee {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    /* Accounts for exactly half the container width plus the gap offset for a seamless loop */
+    transform: translateX(calc(-50% - 0.75rem));
+  }
 }
 
-.marquee-track:hover{
-    animation-play-state:paused;
+.animate-marquee {
+  animation: scroll-marquee 40s linear infinite;
+  will-change: transform;
 }
 
-@keyframes marquee{
-    from{ transform:translateX(0); }
-    to{ transform:translateX(-50%); }
-}
-
-@media(prefers-reduced-motion:reduce){
-
-*{
-
-animation-duration:.01ms!important;
-animation-iteration-count:1!important;
-transition-duration:.01ms!important;
-scroll-behavior:auto!important;
-
-}
-
+/* =========================
+   Accessibility / Reduced Motion
+========================== */
+@media(prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
