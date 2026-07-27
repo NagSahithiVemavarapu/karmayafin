@@ -1,31 +1,17 @@
-import {
-  Phone,
-  Mail,
-  MapPin,
-  Clock,
-} from "lucide-react";
+import { Phone, Mail, MapPin, Clock } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-navy-950 text-navy-100/70">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-14 grid md:grid-cols-3 gap-12">
-
-        {/* Logo */}
+    <footer id="contact" className="relative overflow-hidden bg-[#062447] text-white">
+      <div className="relative w-full px-5 lg:px-8 py-12 grid md:grid-cols-3 gap-8">
         <div>
           <div className="flex items-center gap-3">
-            <img
-              src="/logo-mark.png"
-              alt="Karmayafin"
-              className="h-10 w-auto object-contain"
-            />
-
-            <span className="font-display font-semibold text-2xl text-white">
-              Karmaya
-              <span className="text-teal-400">fin</span>
+            <img src="/logo-mark.png" alt="Karmayafin" className="h-10 w-auto object-contain" />
+            <span className="font-display font-semibold text-3xl text-white">
+              Karmaya<span className="text-white/60">fin</span>
             </span>
           </div>
-
-          <p className="mt-4 text-sm leading-8 max-w-xs">
+          <p className="mt-4 text-base leading-8 max-w-xs text-white/80">
             Mutual Fund Distribution & Wealth Building.
             <br />
             Disciplined action today.
@@ -34,106 +20,65 @@ export default function Footer() {
           </p>
         </div>
 
-        {/* Quick Links */}
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-teal-400 mb-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-5">
             Quick Links
           </p>
-
-          <ul className="space-y-3 text-sm">
-            <li>
-              <a href="#about" className="hover:text-white transition-colors">
-                About
-              </a>
-            </li>
-
-            <li>
-              <a href="#services" className="hover:text-white transition-colors">
-                Services
-              </a>
-            </li>
-
-            <li>
-              <a href="#process" className="hover:text-white transition-colors">
-                Process
-              </a>
-            </li>
-
-            <li>
-              <a href="#goals" className="hover:text-white transition-colors">
-                Goal Solutions
-              </a>
-            </li>
-
-            <li>
-              <a href="#calculators" className="hover:text-white transition-colors">
-                Calculators
-              </a>
-            </li>
-
-            <li>
-              <a href="#faq" className="hover:text-white transition-colors">
-                FAQs
-              </a>
-            </li>
+          <ul className="space-y-3 text-base">
+            {[
+              ["About", "#about"],
+              ["Services", "#services"],
+              ["Process", "#process"],
+              ["Goal Solutions", "#goals"],
+              ["Calculators", "#calculators"],
+              ["FAQs", "#faqs"],
+            ].map(([label, href]) => (
+              <li key={label}>
+                <a href={href} className="inline-block text-white/80 transition-all duration-300 hover:text-white hover:translate-x-1">
+                  {label}
+                </a>
+              </li>
+            ))}
           </ul>
         </div>
 
-        {/* Contact */}
         <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-teal-400 mb-5">
+          <p className="text-xs font-semibold uppercase tracking-widest text-white/50 mb-5">
             Contact
           </p>
-
-          <div className="space-y-4 text-sm">
-
-            <div className="flex items-start gap-3">
-              <Phone size={17} className="text-teal-400 mt-0.5 shrink-0" />
-              <span>98800 89210</span>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <Mail size={17} className="text-teal-400 mt-0.5 shrink-0" />
-              <span>contact@karmayafin.com</span>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <MapPin size={17} className="text-teal-400 mt-0.5 shrink-0" />
-              <span>
-                Your Office Address,
-                <br />
-                City, State – PIN
-              </span>
-            </div>
-
-            <div className="flex items-start gap-3">
-              <Clock size={17} className="text-teal-400 mt-0.5 shrink-0" />
-              <span>
-                Mon – Sat
-                <br />
-                10:00 AM – 7:00 PM
-              </span>
-            </div>
-
+          <div className="space-y-4 text-base">
+            {[
+              { icon: Phone, text: "98800 89210" },
+              { icon: Mail, text: "contact@karmayafin.com" },
+              { icon: MapPin, text: "Your Office Address,\nCity, State – PIN" },
+              { icon: Clock, text: "Mon – Sat\n10:00 AM – 7:00 PM" },
+            ].map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div key={index} className="flex items-start gap-3">
+                  {/* Reduced the box from w-10/h-10 to w-8/h-8, updated to rounded-lg, and added mt-0.5 for perfect text alignment */}
+                  <div className="w-8 h-8 rounded-lg border border-white/10 bg-white/5 flex items-center justify-center shrink-0 mt-0.5">
+                    <Icon size={15} className="text-white/80" />
+                  </div>
+                  <span className="whitespace-pre-line text-white/80 leading-relaxed">
+                    {item.text}
+                  </span>
+                </div>
+              );
+            })}
           </div>
         </div>
-
       </div>
 
-      {/* Bottom */}
       <div className="border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-6 lg:px-10 py-6 text-xs space-y-3">
-
-          <p>
-            © {new Date().getFullYear()} Karmayafin.
-            All rights reserved.
+        <div className="w-full px-5 lg:px-8 py-6 text-sm space-y-3">
+          <p className="text-white/60">
+            © {new Date().getFullYear()} Karmayafin. All rights reserved.
           </p>
-
-          <p>
+          <p className="text-white/80 font-medium">
             AMFI Registration: ARN – 289451
           </p>
-
-          <p className="leading-6 text-navy-100/50">
+          <p className="leading-6 text-white/40">
             Mutual fund investments are subject to market risks.
             Read all scheme related documents carefully before investing.
             Karmayafin is an AMFI-registered Mutual Fund Distributor
@@ -145,7 +90,6 @@ export default function Footer() {
             returns. Please consult your financial advisor before making any
             investment decision.
           </p>
-
         </div>
       </div>
     </footer>

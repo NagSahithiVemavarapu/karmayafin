@@ -11,15 +11,10 @@ export default function ConsultationModal({ open, onClose, prefilledInterest }) 
 
   useEffect(() => {
     if (!open) return;
-    function onKey(e) {
-      if (e.key === "Escape") onClose();
-    }
+    function onKey(e) { if (e.key === "Escape") onClose(); }
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
-    return () => {
-      document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = "";
-    };
+    return () => { document.removeEventListener("keydown", onKey); document.body.style.overflow = ""; };
   }, [open, onClose]);
 
   useEffect(() => {
@@ -32,9 +27,7 @@ export default function ConsultationModal({ open, onClose, prefilledInterest }) 
 
   if (!open) return null;
 
-  function update(field, value) {
-    setForm((f) => ({ ...f, [field]: value }));
-  }
+  function update(field, value) { setForm((f) => ({ ...f, [field]: value })); }
 
   function validate() {
     const next = {};
@@ -53,79 +46,79 @@ export default function ConsultationModal({ open, onClose, prefilledInterest }) 
 
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center px-4" role="dialog" aria-modal="true">
-      <div className="absolute inset-0 bg-navy-950/60 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-[#0F172A]/60 backdrop-blur-sm" onClick={onClose} />
 
-      <div className="relative w-[92vw] max-w-[480px] rounded-[28px] bg-white border border-line shadow-[0_30px_80px_rgba(18,60,95,0.18)] overflow-hidden">
-        <div className="flex items-start justify-between px-7 pt-5 pb-1">
+      <div className="relative w-[92vw] max-w-[480px] max-h-[90vh] rounded-[28px] bg-white border border-slate-200 shadow-2xl overflow-hidden flex flex-col">
+        <div className="flex-shrink-0 flex items-start justify-between px-7 pt-5 pb-1">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-wide text-teal-600">Free Consultation</p>
-            <h3 className="mt-1.5 font-display font-semibold text-xl text-navy-950">Talk to Karmayafin</h3>
-            <p className="mt-1.5 text-sm text-slate-500">
-              Tell us a bit about your goals — we'll call you back shortly.
-            </p>
+            <p className="text-xs font-semibold uppercase tracking-wide text-[#0891B2]">Free Consultation</p>
+            <h3 className="mt-1.5 font-display font-semibold text-2xl text-[#0F172A]">Talk to Karmayafin</h3>
+            <p className="mt-1.5 text-base text-[#475569]">Tell us a bit about your goals — we'll call you back shortly.</p>
           </div>
-          <button onClick={onClose} aria-label="Close" className="text-slate-400 hover:text-navy-950 transition-colors">
+          <button onClick={onClose} aria-label="Close" className="text-[#475569] hover:text-[#0F172A] transition-colors">
             <X size={20} />
           </button>
         </div>
 
         {submitted ? (
           <div className="px-5 sm:px-6 md:px-7 pt-5 pb-6">
-            <div className="rounded-xl bg-navy-900/5 border border-navy-900/10 p-5">
-              <p className="font-display font-semibold text-navy-950">Thanks, {form.name}.</p>
-              <p className="mt-1.5 text-sm text-slate-600 leading-relaxed">
-                We've received your details and will call you back shortly.
-              </p>
+            <div className="rounded-xl bg-slate-50 border border-slate-100 p-5">
+              <p className="font-display font-semibold text-xl text-[#0F172A]">Thanks, {form.name}.</p>
+              <p className="mt-1.5 text-base text-[#475569] leading-relaxed">We've received your details and will call you back shortly.</p>
             </div>
             <button
               onClick={onClose}
-              className="mt-6 w-full inline-flex justify-center items-center rounded-full bg-navy-900 text-white text-sm font-semibold px-5 py-3 hover:bg-navy-700 transition-colors"
+              className="mt-6 w-full inline-flex justify-center items-center rounded-full bg-gradient-to-r from-[#123C5F] via-[#1E6177] to-[#4FAE9C] text-white text-base font-semibold px-5 py-3 hover:scale-[1.02] transition-all duration-300"
             >
               Done
             </button>
           </div>
         ) : (
-          <form onSubmit={handleSubmit} className="px-7 pt-4 pb-6 space-y-3">
-            <Field label="Name" value={form.name} onChange={(v) => update("name", v)} error={errors.name} autoFocus />
-            <Field label="Mobile number" type="tel" value={form.mobile} onChange={(v) => update("mobile", v)} error={errors.mobile} />
-            <Field label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} error={errors.email} />
+          <form onSubmit={handleSubmit} className="flex flex-col flex-1 min-h-0">
+            <div className="flex-1 min-h-0 overflow-y-auto px-7 pt-4 pb-3 space-y-3">
+              <Field label="Name" value={form.name} onChange={(v) => update("name", v)} error={errors.name} autoFocus />
+              <Field label="Mobile number" type="tel" value={form.mobile} onChange={(v) => update("mobile", v)} error={errors.mobile} />
+              <Field label="Email" type="email" value={form.email} onChange={(v) => update("email", v)} error={errors.email} />
 
-            <label className="block">
-              <span className="text-xs font-medium text-slate-600">Interested in</span>
-              <select
-                value={form.interest}
-                onChange={(e) => update("interest", e.target.value)}
-                className="mt-1 w-full rounded-xl border border-line px-4 py-2.5 text-sm text-navy-950 outline-none transition-all focus:border-navy-500"
+              <label className="block">
+                <span className="text-sm font-medium text-[#475569]">Interested in</span>
+                <select
+                  value={form.interest}
+                  onChange={(e) => update("interest", e.target.value)}
+                  className="mt-1 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-base text-[#0F172A] outline-none transition-all focus:border-[#0891B2]"
+                >
+                  {interests.map((i) => (
+                    <option key={i} value={i}>{i}</option>
+                  ))}
+                </select>
+              </label>
+
+              <label className="block">
+                <span className="text-sm font-medium text-[#475569]">Message (optional)</span>
+                <textarea
+                  value={form.message}
+                  onChange={(e) => update("message", e.target.value)}
+                  rows={2}
+                  className="mt-1 w-full rounded-xl border border-slate-200 px-4 py-2.5 text-base text-[#0F172A] outline-none transition-all focus:border-[#0891B2] resize-none"
+                />
+              </label>
+            </div>
+
+            <div className="flex-shrink-0 px-7 pt-3 pb-6 space-y-3 border-t border-slate-100">
+              <button
+                type="submit"
+                className="w-full inline-flex justify-center items-center rounded-full bg-gradient-to-r from-[#123C5F] via-[#1E6177] to-[#4FAE9C] text-white text-base font-semibold py-3 shadow-md hover:shadow-lg hover:scale-[1.02] transition-all duration-300"
               >
-                {interests.map((i) => (
-                  <option key={i} value={i}>{i}</option>
-                ))}
-              </select>
-            </label>
+                Request a Callback
+              </button>
 
-            <label className="block">
-              <span className="text-xs font-medium text-slate-600">Message (optional)</span>
-              <textarea
-                value={form.message}
-                onChange={(e) => update("message", e.target.value)}
-                rows={2}
-                className="mt-1 w-full rounded-xl border border-line px-4 py-2.5 text-sm text-navy-950 outline-none transition-all focus:border-navy-500 resize-none"
-              />
-            </label>
-
-            <button
-              type="submit"
-              className="w-full inline-flex justify-center items-center rounded-full bg-gradient-to-r from-navy-900 to-teal-600 text-white font-semibold py-3 shadow-lg hover:shadow-xl hover:scale-[1.02] transition-all duration-300"
-            >
-              Request a Callback
-            </button>
-
-            <p className="pt-2 text-center text-sm text-slate-600">
-              Or call directly:{" "}
-              <a href="tel:+919880089210" className="font-semibold text-navy-800 hover:text-teal-600">
-                98800 89210
-              </a>
-            </p>
+              <p className="pt-1 text-center text-sm text-[#475569]">
+                Or call directly:{" "}
+                <a href="tel:+919880089210" className="font-semibold text-[#0F172A] hover:text-[#0891B2]">
+                  98800 89210
+                </a>
+              </p>
+            </div>
           </form>
         )}
       </div>
@@ -136,17 +129,17 @@ export default function ConsultationModal({ open, onClose, prefilledInterest }) 
 function Field({ label, value, onChange, error, type = "text", autoFocus = false }) {
   return (
     <label className="block">
-      <span className="text-xs font-medium text-slate-600">{label}</span>
+      <span className="text-sm font-medium text-[#475569]">{label}</span>
       <input
         type={type}
         value={value}
         autoFocus={autoFocus}
         onChange={(e) => onChange(e.target.value)}
-        className={`mt-1 w-full rounded-xl border px-4 py-2.5 text-sm text-navy-950 outline-none transition-all focus:border-navy-500 ${
-          error ? "border-red-300" : "border-line"
+        className={`mt-1 w-full rounded-xl border px-4 py-2.5 text-base text-[#0F172A] outline-none transition-all focus:border-[#0891B2] ${
+          error ? "border-red-300" : "border-slate-200"
         }`}
       />
-      {error && <span className="mt-1 block text-xs text-red-500">{error}</span>}
+      {error && <span className="mt-1 block text-sm text-red-500">{error}</span>}
     </label>
   );
 }

@@ -1,11 +1,5 @@
 import { useMemo, useState } from "react";
-import {
-  sipFutureValue,
-  lumpSumFutureValue,
-  requiredSipForGoal,
-  retirementPlan,
-  formatINR,
-} from "../utils/calculators";
+import { sipFutureValue, lumpSumFutureValue, requiredSipForGoal, retirementPlan, formatINR } from "../utils/calculators";
 
 const tabs = ["SIP", "Lump-Sum", "Goal", "Retirement"];
 
@@ -13,10 +7,9 @@ function Slider({ label, value, onChange, min, max, step, suffix = "" }) {
   return (
     <label className="block">
       <div className="flex items-baseline justify-between mb-2">
-        <span className="text-sm font-medium text-slate-600">{label}</span>
-        <span className="font-mono text-sm font-semibold text-navy-800">
-          {value}
-          {suffix}
+        <span className="text-base font-medium text-[#0F172A]">{label}</span>
+        <span className="text-base font-semibold text-[#0891B2] px-3 py-1 rounded-full border border-[#BFEBDD] bg-[#EEF9F6]">
+          {value}{suffix}
         </span>
       </div>
       <input
@@ -26,7 +19,7 @@ function Slider({ label, value, onChange, min, max, step, suffix = "" }) {
         step={step}
         value={value}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="w-full accent-navy-700"
+        className="w-full accent-[#0891B2]"
       />
     </label>
   );
@@ -34,9 +27,9 @@ function Slider({ label, value, onChange, min, max, step, suffix = "" }) {
 
 function ResultRow({ label, value, emphasis = false }) {
   return (
-    <div className="flex items-baseline justify-between py-2.5 border-b border-line last:border-0">
-      <span className="text-sm text-slate-600">{label}</span>
-      <span className={`font-mono ${emphasis ? "text-xl font-semibold text-navy-900" : "text-sm font-medium text-navy-800"}`}>
+    <div className="flex items-baseline justify-between py-2.5 border-b border-slate-200 last:border-0">
+      <span className="text-base text-[#475569]">{label}</span>
+      <span className={`font-mono ${emphasis ? "text-xl font-semibold text-[#0891B2]" : "text-base font-medium text-[#0F172A]"}`}>
         {value}
       </span>
     </div>
@@ -48,7 +41,6 @@ function SipCalc() {
   const [rate, setRate] = useState(12);
   const [years, setYears] = useState(15);
   const result = useMemo(() => sipFutureValue(amount, rate, years), [amount, rate, years]);
-
   return (
     <div className="grid md:grid-cols-2 gap-8">
       <div className="space-y-6">
@@ -56,7 +48,7 @@ function SipCalc() {
         <Slider label="Expected annual return" value={rate} onChange={setRate} min={1} max={20} step={0.5} suffix="%" />
         <Slider label="Investment period" value={years} onChange={setYears} min={1} max={35} step={1} suffix=" yrs" />
       </div>
-      <div className="rounded-2xl bg-paper border border-line p-6">
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
         <ResultRow label="Total invested" value={formatINR(result.invested)} />
         <ResultRow label="Estimated gains" value={formatINR(result.gains)} />
         <ResultRow label="Future value" value={formatINR(result.futureValue)} emphasis />
@@ -70,7 +62,6 @@ function LumpSumCalc() {
   const [rate, setRate] = useState(12);
   const [years, setYears] = useState(10);
   const result = useMemo(() => lumpSumFutureValue(principal, rate, years), [principal, rate, years]);
-
   return (
     <div className="grid md:grid-cols-2 gap-8">
       <div className="space-y-6">
@@ -78,7 +69,7 @@ function LumpSumCalc() {
         <Slider label="Expected annual return" value={rate} onChange={setRate} min={1} max={20} step={0.5} suffix="%" />
         <Slider label="Investment period" value={years} onChange={setYears} min={1} max={35} step={1} suffix=" yrs" />
       </div>
-      <div className="rounded-2xl bg-paper border border-line p-6">
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
         <ResultRow label="Invested amount" value={formatINR(result.invested)} />
         <ResultRow label="Estimated gains" value={formatINR(result.gains)} />
         <ResultRow label="Future value" value={formatINR(result.futureValue)} emphasis />
@@ -92,7 +83,6 @@ function GoalCalc() {
   const [rate, setRate] = useState(12);
   const [years, setYears] = useState(10);
   const result = useMemo(() => requiredSipForGoal(target, rate, years), [target, rate, years]);
-
   return (
     <div className="grid md:grid-cols-2 gap-8">
       <div className="space-y-6">
@@ -100,7 +90,7 @@ function GoalCalc() {
         <Slider label="Expected annual return" value={rate} onChange={setRate} min={1} max={20} step={0.5} suffix="%" />
         <Slider label="Time to goal" value={years} onChange={setYears} min={1} max={35} step={1} suffix=" yrs" />
       </div>
-      <div className="rounded-2xl bg-paper border border-line p-6">
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6">
         <ResultRow label="Total you'll invest" value={formatINR(result.totalInvested)} />
         <ResultRow label="Estimated gains" value={formatINR(result.gains)} />
         <ResultRow label="Required monthly SIP" value={formatINR(result.monthlySip)} emphasis />
@@ -117,21 +107,7 @@ function RetirementCalc() {
   const [inflation, setInflation] = useState(6);
   const [preReturn, setPreReturn] = useState(12);
   const [postReturn, setPostReturn] = useState(8);
-
-  const result = useMemo(
-    () =>
-      retirementPlan({
-        currentAge,
-        retirementAge,
-        lifeExpectancy,
-        monthlyExpenseToday: monthlyExpense,
-        inflationPct: inflation,
-        preRetirementReturnPct: preReturn,
-        postRetirementReturnPct: postReturn,
-      }),
-    [currentAge, retirementAge, lifeExpectancy, monthlyExpense, inflation, preReturn, postReturn]
-  );
-
+  const result = useMemo(() => retirementPlan({ currentAge, retirementAge, lifeExpectancy, monthlyExpenseToday: monthlyExpense, inflationPct: inflation, preRetirementReturnPct: preReturn, postRetirementReturnPct: postReturn }), [currentAge, retirementAge, lifeExpectancy, monthlyExpense, inflation, preReturn, postReturn]);
   return (
     <div className="grid md:grid-cols-2 gap-8">
       <div className="space-y-5">
@@ -141,7 +117,7 @@ function RetirementCalc() {
         <Slider label="Monthly expense today" value={monthlyExpense} onChange={setMonthlyExpense} min={10000} max={500000} step={5000} suffix=" ₹" />
         <Slider label="Expected inflation" value={inflation} onChange={setInflation} min={2} max={10} step={0.5} suffix="%" />
       </div>
-      <div className="rounded-2xl bg-paper border border-line p-6 h-fit">
+      <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 h-fit">
         <ResultRow label="Monthly expense at retirement" value={formatINR(result.monthlyExpenseAtRetirement)} />
         <ResultRow label="Corpus required at retirement" value={formatINR(result.corpusRequired)} />
         <ResultRow label="Required monthly SIP" value={formatINR(result.monthlySip)} emphasis />
@@ -152,18 +128,17 @@ function RetirementCalc() {
 
 export default function Calculators() {
   const [active, setActive] = useState("SIP");
-
   return (
-    <section id="calculators" className="bg-white">
-      <div className="max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
+    <section id="calculators" className="relative overflow-hidden bg-slate-50">
+      <div className="relative max-w-7xl mx-auto px-6 lg:px-10 py-16 lg:py-20">
         <div className="mb-10 max-w-2xl">
-          <span className="inline-flex items-center rounded-full bg-navy-900/5 text-navy-800 text-xs font-semibold uppercase tracking-wide px-4 py-1.5 mb-6 border border-navy-900/10">
+          <span className="inline-flex items-center rounded-full bg-white border border-slate-200 text-[#0891B2] text-xs font-semibold uppercase tracking-wide px-4 py-1.5 mb-6">
             Tools & Calculators
           </span>
-          <h2 className="font-display font-semibold text-3xl sm:text-4xl leading-tight tracking-tight text-navy-950">
+          <h2 className="font-display font-semibold text-3xl sm:text-4xl leading-tight tracking-tight text-[#0F172A]">
             Plan your investments.
           </h2>
-          <p className="mt-3 text-slate-600 leading-relaxed">
+          <p className="mt-3 text-lg text-[#475569] leading-relaxed">
             Small, consistent investments today can create a substantial
             corpus tomorrow. See the power of compounding for yourself.
           </p>
@@ -174,10 +149,10 @@ export default function Calculators() {
             <button
               key={tab}
               onClick={() => setActive(tab)}
-              className={`rounded-full text-sm font-semibold px-5 py-2.5 transition-colors ${
+              className={`rounded-full text-base font-semibold px-5 py-2.5 transition-all duration-300 ${
                 active === tab
-                  ? "bg-navy-900 text-white"
-                  : "bg-paper text-slate-600 border border-line hover:border-navy-900/30"
+                  ? "bg-gradient-to-r from-[#123C5F] via-[#1E6177] to-[#4FAE9C] text-white shadow-md"
+                  : "bg-white border border-slate-200 text-[#475569] hover:bg-slate-100 hover:text-[#0F172A]"
               }`}
             >
               {tab}
@@ -185,14 +160,13 @@ export default function Calculators() {
           ))}
         </div>
 
-        <div className="rounded-3xl border border-line bg-paper/50 p-6 sm:p-8">
+        <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-xl">
           {active === "SIP" && <SipCalc />}
           {active === "Lump-Sum" && <LumpSumCalc />}
           {active === "Goal" && <GoalCalc />}
           {active === "Retirement" && <RetirementCalc />}
         </div>
-
-        <p className="mt-6 text-xs text-slate-500 leading-relaxed max-w-2xl">
+        <p className="mt-6 text-sm text-[#475569] leading-relaxed max-w-2xl">
           These calculators are for illustrative purposes only, based on
           assumed constant rates of return. Actual mutual fund returns are
           subject to market risk and will vary.
