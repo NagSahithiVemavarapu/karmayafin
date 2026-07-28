@@ -49,7 +49,6 @@ export default function Hero({ onConsult }) {
           </div>
 
           <div className="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-[#475569]">
-            <span className="font-mono text-xs text-[#0F172A]">ARN-289451</span>
             <span>Goal-Based Planning</span>
             <span>Transparent, Client-First Guidance</span>
           </div>
