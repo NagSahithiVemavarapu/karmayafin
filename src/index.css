@@ -104,3 +104,11 @@ body {
     scroll-behavior: auto !important;
   }
 }
+/* =========================
+   Pause Marquee on Hover/Tap
+========================== */
+.pause-marquee:hover,
+.pause-marquee:active,
+.pause-marquee:focus-within {
+  animation-play-state: paused !important;
+}
